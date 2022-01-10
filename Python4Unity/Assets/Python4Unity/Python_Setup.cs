@@ -10,6 +10,8 @@ public class Python_Setup : MonoBehaviour
 		Runtime.PythonDLL = Application.dataPath + "/StreamingAssets/Python4Unity/python39/python39.dll";
 		PythonEngine.Initialize(mode: ShutdownMode.Reload);
 
+		//addPath();
+
 		IEnumerator coroutine = ver();
 		yield return coroutine;
 		Debug.Log("Hello Python! : " + coroutine.Current);
@@ -34,5 +36,10 @@ public class Python_Setup : MonoBehaviour
 
 			yield return "Python" + sys.version + "\nPlatform:" + platform.platform(terse: true) + "\nUnity:" + Application.unityVersion;
 		}
+	}
+
+	private void addPath()
+	{
+		PythonEngine.RunSimpleString("import sys;sys.path.append('" + Application.dataPath + "/StreamingAssets/(yourlib)');");
 	}
 }
