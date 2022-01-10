@@ -40,6 +40,7 @@ public class Python_Setup : MonoBehaviour
 
 	private void addPath()
 	{
+		//Add Python Library Path
 		PythonEngine.RunSimpleString("import sys;sys.path.append('" + Application.dataPath + "/StreamingAssets/(yourlib)');");
 	}
 }
